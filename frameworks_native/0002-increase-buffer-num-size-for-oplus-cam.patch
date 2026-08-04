@@ -1,0 +1,25 @@
+From ef3a7d7fb2264f6414e3e8b04067803cf97bd940 Mon Sep 17 00:00:00 2001
+From: realahnet <syedmusicrealise@gmail.com>
+Date: Fri, 20 Mar 2026 05:18:22 +0500
+Subject: [PATCH 2/2] increase buffer num size for oplus cam
+
+---
+ libs/ui/include/ui/BufferQueueDefs.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libs/ui/include/ui/BufferQueueDefs.h b/libs/ui/include/ui/BufferQueueDefs.h
+index 0fecda9..117dc30 100644
+--- a/libs/ui/include/ui/BufferQueueDefs.h
++++ b/libs/ui/include/ui/BufferQueueDefs.h
+@@ -22,7 +22,7 @@ namespace android {
+         // BufferQueue will keep track of at most this value of buffers.
+         // Attempts at runtime to increase the number of buffers past this
+         // will fail.
+-        static constexpr int NUM_BUFFER_SLOTS = 64;
++        static constexpr int NUM_BUFFER_SLOTS = 96;
+ 
+         enum {
+             // A flag returned by dequeueBuffer when the client needs to call
+-- 
+2.54.0
+

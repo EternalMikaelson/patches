@@ -1,0 +1,34 @@
+From 0217f233304f42f6715c082da8b8ada6e67573b3 Mon Sep 17 00:00:00 2001
+From: realahnet <syedmusicrealise@gmail.com>
+Date: Mon, 15 Jun 2026 10:35:39 +0500
+Subject: [PATCH 3/3] convert package_name to soong config
+
+---
+ services/camera/libcameraservice/Android.bp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/services/camera/libcameraservice/Android.bp b/services/camera/libcameraservice/Android.bp
+index 7194ca2923..9ce680a9f3 100644
+--- a/services/camera/libcameraservice/Android.bp
++++ b/services/camera/libcameraservice/Android.bp
+@@ -131,7 +131,6 @@ cc_library {
+ 
+     defaults: [
+         "libcameraservice_deps",
+-        "camera_package_name_defaults",
+         "libcameraservice_ext_lib_defaults"
+     ],
+     // Camera service source
+@@ -253,6 +252,9 @@ cc_library {
+     }) + select(soong_config_variable("cameraservice", "bypass_pixelmode"), {
+         any @ value: ["-DBYPASS_PIXELMODE"],
+         default: [],
++    }) + select(soong_config_variable("camera", "package_name"), {
++        any @ flag_val: ["-DCAMERA_PACKAGE_NAME=\"" + flag_val + "\""],
++        default: [],
+     }),
+ }
+ 
+-- 
+2.54.0
+
